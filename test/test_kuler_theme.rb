@@ -1,12 +1,10 @@
 require "test/unit"
-require 'mocha'
 require 'pathname'
 
 require "kuler"
 
-FIXTURES = Pathname.new( File.dirname(__FILE__) ).expand_path + "fixtures"
-
 class TestKulerTheme < Test::Unit::TestCase
+  FIXTURES = Pathname.new( File.dirname(__FILE__) ).expand_path + "fixtures"
 
   def setup
     xml = FIXTURES + "single_random_result.xml"

@@ -4,10 +4,9 @@ require 'pathname'
 
 require "kuler"
 
-FIXTURES = Pathname.new( File.dirname(__FILE__) ).expand_path + "fixtures"
-
 class TestKuler < Test::Unit::TestCase
-  API_KEY = "test_api_key"
+  API_KEY  = "test_api_key"
+  FIXTURES = Pathname.new( File.dirname(__FILE__) ).expand_path + "fixtures"
 
   def setup
     @kuler = Kuler.new( API_KEY )

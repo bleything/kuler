@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'hoe'
 
-Hoe.spec 'plist' do
+Hoe.spec 'kuler' do
   developer 'Ben Bleything', 'ben@bleything.net'
 
   self.extra_rdoc_files = Dir['*.rdoc'] + ['LICENSE']

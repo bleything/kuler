@@ -1,6 +1,3 @@
-# dependencies
-require 'nokogiri'
-
 class Kuler::Theme
 
   attr_accessor :theme_id, :title, :tags, :rating, :author_name,
