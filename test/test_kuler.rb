@@ -15,18 +15,10 @@ class TestKuler < Test::Unit::TestCase
   ########################################################################
   ### Basics
 
-  def test_setting_api_key_on_initialize
+  def test_creation
     sample_key = '123456'
 
     kuler = Kuler.new( sample_key )
-    assert_equal sample_key, kuler.api_key, "api key does not match"
-  end
-
-  def test_setting_api_key_after_creation
-    sample_key = '654321'
-
-    kuler = Kuler.new
-    kuler.api_key = sample_key
     assert_equal sample_key, kuler.api_key, "api key does not match"
   end
 

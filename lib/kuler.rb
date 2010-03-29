@@ -1,9 +1,6 @@
-### dependencies
 require 'nokogiri'
 require 'open-uri'
 
-### bits of the library
-class Kuler ; end # make sure the namespace exists
 require 'kuler/theme'
 
 class Kuler
@@ -15,11 +12,11 @@ class Kuler
   BASE_URL = "http://kuler-api.adobe.com"
 
   ### the key required to access the kuler API
-  attr_accessor :api_key
+  attr_reader :api_key
 
   ### Create a new Kuler object. Accepts a single argument, the
   ### +api_key+.
-  def initialize( api_key = nil )
+  def initialize( api_key )
     @api_key = api_key
   end
 
@@ -38,11 +35,11 @@ class Kuler
     }.merge( args )
 
     unless [ :recent, :popular, :rating, :random ].include? opts[:type]
-      raise ArgumentError, "unknown feed type"
+      raise ArgumentError, "unknown feed type '#{opts[:type]}'. Valid options are recent, popular, rating, or random"
     end
 
     unless (1..100).include? opts[:limit]
-      raise ArgumentError, "invalid limit"
+      raise ArgumentError, "invalid limit: #{opts[:limit]}. Valid options are 1-100"
     end
 
     options = {
