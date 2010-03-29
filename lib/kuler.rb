@@ -15,10 +15,26 @@ class Kuler
     @api_key = api_key
   end
 
-  ### Given a +feed_type+, generate the appropriate feed url
-  def build_url( feed_type = :recent )
+  ### Build the appropriate URL for a request to the Kuler API.
+  ###
+  ### Parameters:
+  ### +feed_type+:: the type of API call to make. Options are +recent+,
+  ###               +popular+, +rating+, or +random+.
+  ### +limit+::     the number of schemes to return. Valid range is
+  ###               1 to 100.
+  def build_url( feed_type = :recent, limit = 20 )
+    unless [ :recent, :popular, :rating, :random ].include? feed_type
+      raise ArgumentError, "unknown feed_type"
+    end
+
+    unless (1..100).include? limit
+      raise ArgumentError, "invalid limit"
+    end
+
     options = {
       :key          => self.api_key,
+
+      :itemsPerPage => limit,
       :listType     => feed_type,
     }
 
