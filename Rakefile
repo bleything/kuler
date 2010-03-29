@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'hoe'
 
+Hoe.plugin :doofus, :git
+
 Hoe.spec 'kuler' do
   developer 'Ben Bleything', 'ben@bleything.net'
 
