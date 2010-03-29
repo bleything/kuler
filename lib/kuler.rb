@@ -18,19 +18,19 @@ class Kuler
   ### Build the appropriate URL for a request to the Kuler API.
   ###
   ### Parameters:
-  ### +feed_type+:: the type of API call to make. Options are +recent+,
-  ###               +popular+, +rating+, or +random+.
-  ### +limit+::     the number of schemes to return. Valid range is
-  ###               1 to 100.
+  ### +type+::  the type of API call to make. Options are +recent+,
+  ###           +popular+, +rating+, or +random+.
+  ### +limit+:: the number of schemes to return. Valid range is
+  ###           1 to 100.
   def build_url( args = {} )
     # default options
     opts = {
-      :feed_type => :recent,
-      :limit     => 20
+      :type  => :recent,
+      :limit => 20
     }.merge( args )
 
-    unless [ :recent, :popular, :rating, :random ].include? opts[:feed_type]
-      raise ArgumentError, "unknown feed_type"
+    unless [ :recent, :popular, :rating, :random ].include? opts[:type]
+      raise ArgumentError, "unknown feed type"
     end
 
     unless (1..100).include? opts[:limit]
@@ -41,7 +41,7 @@ class Kuler
       :key          => self.api_key,
 
       :itemsPerPage => opts[:limit],
-      :listType     => opts[:feed_type],
+      :listType     => opts[:type],
     }
 
     get_args = options.

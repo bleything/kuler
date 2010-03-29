@@ -39,18 +39,18 @@ class TestKuler < Test::Unit::TestCase
   def test_url_builder_with_options
     expected = "http://kuler-api.adobe.com/rss/get.cfm?itemsPerPage=100&key=#{API_KEY}&listType=random"
 
-    actual = @kuler.build_url( :feed_type => :random, :limit => 100 )
+    actual = @kuler.build_url( :type => :random, :limit => 100 )
     assert_equal expected, actual
   end
 
   def test_url_builder_argument_checking
     # unknown feed type
     assert_raise ArgumentError do
-      @kuler.build_url :feed_type => :foo
+      @kuler.build_url :type => :foo
     end
 
     assert_nothing_raised do
-      @kuler.build_url :feed_type => :recent
+      @kuler.build_url :type => :recent
     end
 
     # invalid counts
