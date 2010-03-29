@@ -20,7 +20,7 @@ class Kuler
   ### Parameters:
   ### +type+::  the type of API call to make. Options are +recent+,
   ###           +popular+, +rating+, or +random+.
-  ### +limit+:: the number of schemes to return. Valid range is
+  ### +limit+:: the number of themes to return. Valid range is
   ###           1 to 100.
   def build_url( args = {} )
     # default options

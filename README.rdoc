@@ -13,8 +13,8 @@ http://kuler.adobe.com/api
 
 == FEATURES/PROBLEMS:
 
-* retrieve color schemes from Kuler:
-  * most recent schemes
+* retrieve color themes from Kuler:
+  * most recent themes
   * most popular
   * highest rated
   * random
