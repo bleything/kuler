@@ -22,20 +22,26 @@ class Kuler
   ###               +popular+, +rating+, or +random+.
   ### +limit+::     the number of schemes to return. Valid range is
   ###               1 to 100.
-  def build_url( feed_type = :recent, limit = 20 )
-    unless [ :recent, :popular, :rating, :random ].include? feed_type
+  def build_url( args = {} )
+    # default options
+    opts = {
+      :feed_type => :recent,
+      :limit     => 20
+    }.merge( args )
+
+    unless [ :recent, :popular, :rating, :random ].include? opts[:feed_type]
       raise ArgumentError, "unknown feed_type"
     end
 
-    unless (1..100).include? limit
+    unless (1..100).include? opts[:limit]
       raise ArgumentError, "invalid limit"
     end
 
     options = {
       :key          => self.api_key,
 
-      :itemsPerPage => limit,
-      :listType     => feed_type,
+      :itemsPerPage => opts[:limit],
+      :listType     => opts[:feed_type],
     }
 
     get_args = options.
