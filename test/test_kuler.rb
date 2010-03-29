@@ -2,7 +2,38 @@ require "test/unit"
 require "kuler"
 
 class TestKuler < Test::Unit::TestCase
-  def test_sanity
-    flunk "write tests or I will kneecap you"
+  API_KEY = "test_api_key"
+
+  def setup
+    @kuler = Kuler.new( API_KEY )
   end
+
+  ########################################################################
+  ### Basics
+
+  def test_setting_api_key_on_initialize
+    sample_key = '123456'
+
+    kuler = Kuler.new( sample_key )
+    assert_equal sample_key, kuler.api_key, "api key does not match"
+  end
+
+  def test_setting_api_key_after_creation
+    sample_key = '654321'
+
+    kuler = Kuler.new
+    kuler.api_key = sample_key
+    assert_equal sample_key, kuler.api_key, "api key does not match"
+  end
+
+  ########################################################################
+  ### feed url generation
+
+  def test_url_builder
+    expected = "http://kuler-api.adobe.com/rss/get.cfm?key=#{API_KEY}&listType=recent"
+    actual = @kuler.build_url
+
+    assert_equal expected, actual, "feed url incorrectly generated"
+  end
+
 end
