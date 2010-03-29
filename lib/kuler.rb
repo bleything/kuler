@@ -1,3 +1,11 @@
+### dependencies
+require 'nokogiri'
+require 'open-uri'
+
+### bits of the library
+class Kuler ; end # make sure the namespace exists
+require 'kuler/theme'
+
 class Kuler
 
   ### Library version
@@ -50,6 +58,13 @@ class Kuler
       join( "&" )
 
     return "#{BASE_URL}/rss/get.cfm?#{get_args}"
+  end
+
+  ### fetch a single random color theme
+  def fetch_random_theme
+    url = build_url( :type => :random, :limit => 1 )
+    xml = Nokogiri::XML( open(url) ).at( "//kuler:themeItem" )
+    return Kuler::Theme.new( xml )
   end
 
 end

@@ -1,5 +1,10 @@
 require "test/unit"
+require 'mocha'
+require 'pathname'
+
 require "kuler"
+
+FIXTURES = Pathname.new( File.dirname(__FILE__) ).expand_path + "fixtures"
 
 class TestKuler < Test::Unit::TestCase
   API_KEY = "test_api_key"
@@ -69,5 +74,18 @@ class TestKuler < Test::Unit::TestCase
     end
 
   end
+
+  ########################################################################
+  ### feed url generation
+
+  def test_fetch_random_theme
+    url = @kuler.build_url( :type => :random, :limit => 1 )
+    xml = FIXTURES + "single_random_result.xml"
+    @kuler.expects( :open ).with( url ).returns( xml.read )
+
+    theme = @kuler.fetch_random_theme
+    assert_kind_of Kuler::Theme, theme
+  end
+
 
 end

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kuler="http://kuler.adobe.com/kuler/API/rss/" xmlns:rss="http://blogs.law.harvard.edu/tech/rss" version="2.0">
+  <channel>
+    <title>kuler popular themes</title>
+    <link>http://kuler.adobe.com/</link>
+    <description>most popular themes on kuler (1 to 1 of
+    328331)</description>
+    <language>en-us</language>
+    <pubDate>Sun, 28 Mar 2010 19:00:58 PST</pubDate>
+    <lastBuildDate>Sun, 28 Mar 2010 19:00:58 PST</lastBuildDate>
+    <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+    <generator>Kuler Services</generator>
+    <managingEditor>kulerfeedback@adobe.com</managingEditor>
+    <webMaster>kulerfeedback@adobe.com</webMaster>
+    <recordCount>328331</recordCount>
+    <startIndex>0</startIndex>
+    <itemsPerPage>1</itemsPerPage>
+    <item>
+      <title>Theme Title: sandy stone beach ocean diver</title>
+      <link>http://kuler.adobe.com/index.cfm#themeID/15325</link>
+      <guid>http://kuler.adobe.com/index.cfm#themeID/15325</guid>
+      <enclosure xmlns="http://www.solitude.dk/syndication/enclosures/">
+
+        <title>sandy stone beach ocean diver</title>
+        <link length="1" type="image/png">
+          <url>
+          http://kuler-api.adobe.com/kuler/themeImages/theme_15325.png</url>
+        </link>
+      </enclosure>
+      <description>&lt;img
+      src="http://kuler-api.adobe.com/kuler/themeImages/theme_15325.png"
+      /&gt;&lt;br /&gt; Artist: ps&lt;br /&gt; ThemeID: 15325&lt;br
+      /&gt; Posted: 01/18/2007&lt;br /&gt; Tags: beach, diver,
+      ocean, sandy, stone &lt;br /&gt; Hex: E6E2AF, A7A37E, EFECCA,
+      046380, 002F2F</description>
+      <kuler:themeItem>
+        <kuler:themeID>15325</kuler:themeID>
+        <kuler:themeTitle>sandy stone beach ocean diver</kuler:themeTitle>
+        <kuler:themeImage>
+        http://kuler-api.adobe.com/kuler/themeImages/theme_15325.png</kuler:themeImage>
+        <kuler:themeAuthor>
+          <kuler:authorID>17923</kuler:authorID>
+          <kuler:authorLabel>ps</kuler:authorLabel>
+        </kuler:themeAuthor>
+        <kuler:themeTags>beach, diver, ocean, sandy,
+        stone</kuler:themeTags>
+        <kuler:themeRating>4</kuler:themeRating>
+        <kuler:themeDownloadCount>20476</kuler:themeDownloadCount>
+        <kuler:themeCreatedAt>20070118</kuler:themeCreatedAt>
+        <kuler:themeEditedAt>20070118</kuler:themeEditedAt>
+        <kuler:themeSwatches>
+          <kuler:swatch>
+            <kuler:swatchHexColor>E6E2AF</kuler:swatchHexColor>
+            <kuler:swatchColorMode>rgb</kuler:swatchColorMode>
+            <kuler:swatchChannel1>0.901961</kuler:swatchChannel1>
+            <kuler:swatchChannel2>0.886275</kuler:swatchChannel2>
+            <kuler:swatchChannel3>0.686275</kuler:swatchChannel3>
+            <kuler:swatchChannel4>0.0</kuler:swatchChannel4>
+            <kuler:swatchIndex>0</kuler:swatchIndex>
+          </kuler:swatch>
+          <kuler:swatch>
+            <kuler:swatchHexColor>A7A37E</kuler:swatchHexColor>
+            <kuler:swatchColorMode>rgb</kuler:swatchColorMode>
+            <kuler:swatchChannel1>0.654902</kuler:swatchChannel1>
+            <kuler:swatchChannel2>0.639216</kuler:swatchChannel2>
+            <kuler:swatchChannel3>0.494118</kuler:swatchChannel3>
+            <kuler:swatchChannel4>0.0</kuler:swatchChannel4>
+            <kuler:swatchIndex>1</kuler:swatchIndex>
+          </kuler:swatch>
+          <kuler:swatch>
+            <kuler:swatchHexColor>EFECCA</kuler:swatchHexColor>
+            <kuler:swatchColorMode>rgb</kuler:swatchColorMode>
+            <kuler:swatchChannel1>0.937255</kuler:swatchChannel1>
+            <kuler:swatchChannel2>0.92549</kuler:swatchChannel2>
+            <kuler:swatchChannel3>0.792157</kuler:swatchChannel3>
+            <kuler:swatchChannel4>0.0</kuler:swatchChannel4>
+            <kuler:swatchIndex>2</kuler:swatchIndex>
+          </kuler:swatch>
+          <kuler:swatch>
+            <kuler:swatchHexColor>046380</kuler:swatchHexColor>
+            <kuler:swatchColorMode>rgb</kuler:swatchColorMode>
+            <kuler:swatchChannel1>0.0156863</kuler:swatchChannel1>
+            <kuler:swatchChannel2>0.388235</kuler:swatchChannel2>
+            <kuler:swatchChannel3>0.501961</kuler:swatchChannel3>
+            <kuler:swatchChannel4>0.0</kuler:swatchChannel4>
+            <kuler:swatchIndex>3</kuler:swatchIndex>
+          </kuler:swatch>
+          <kuler:swatch>
+            <kuler:swatchHexColor>002F2F</kuler:swatchHexColor>
+            <kuler:swatchColorMode>rgb</kuler:swatchColorMode>
+            <kuler:swatchChannel1>0.0</kuler:swatchChannel1>
+            <kuler:swatchChannel2>0.184314</kuler:swatchChannel2>
+            <kuler:swatchChannel3>0.184314</kuler:swatchChannel3>
+            <kuler:swatchChannel4>0.0</kuler:swatchChannel4>
+            <kuler:swatchIndex>4</kuler:swatchIndex>
+          </kuler:swatch>
+        </kuler:themeSwatches>
+      </kuler:themeItem>
+      <pubDate>Sun, 28 Mar 2010 19:00:58 PST</pubDate>
+    </item>
+  </channel>
+</rss>
