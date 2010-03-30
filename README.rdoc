@@ -50,7 +50,7 @@ For developers:
  * hoe
  * hoe-doofus
  * hoe-git
- * mocha (for developers)
+ * mocha
 
 == INSTALL:
 
