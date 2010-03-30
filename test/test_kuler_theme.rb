@@ -30,4 +30,17 @@ class TestKulerTheme < Test::Unit::TestCase
     end
   end
 
+  def test_hex_codes
+    expected = [
+      "#e6e2af",
+      "#a7a37e",
+      "#efecca",
+      "#046380",
+      "#002f2f"
+    ]
+
+    assert_equal expected, @theme.hex_codes
+  end
+
+
 end

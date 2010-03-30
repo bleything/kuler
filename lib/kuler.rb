@@ -1,6 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 
+require 'kuler/swatch'
 require 'kuler/theme'
 
 class Kuler
