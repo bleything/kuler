@@ -1,6 +1,7 @@
 class Kuler
   class Swatch
 
+    ### the hex code of the color swatch
     attr_accessor :hex_code
 
     ### create a new Kuler::Swatch from a Nokogiri::XML::Element

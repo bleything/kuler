@@ -5,12 +5,8 @@ require 'kuler/swatch'
 require 'kuler/theme'
 
 class Kuler
-
-  ### Library version
-  VERSION = '0.1.0'
-
-  ### Kuler API base URL
-  BASE_URL = "http://kuler-api.adobe.com"
+  VERSION = '0.1.0' # :nodoc:
+  BASE_URL = "http://kuler-api.adobe.com" # :nodoc:
 
   ### the key required to access the kuler API
   attr_reader :api_key
