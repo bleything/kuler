@@ -3,7 +3,7 @@
 * http://github.com/bleything/kuler
 * http://kuler.adobe.com
 
-== DESCRIPTION:
+== DESCRIPTION
 
 Kuler is a fun little webapp that allows you to discover, explore, and
 share color themes. This is a Ruby library to access the Kuler service.
@@ -11,7 +11,7 @@ share color themes. This is a Ruby library to access the Kuler service.
 To use Kuler, you'll need an API key, which you can obtain from Adobe at
 http://kuler.adobe.com/api
 
-== FEATURES/PROBLEMS:
+== FEATURES/PROBLEMS
 
 * retrieve color themes from Kuler:
   * most recent themes
@@ -19,7 +19,7 @@ http://kuler.adobe.com/api
   * highest rated
   * random
 
-== SYNOPSIS:
+== SYNOPSIS
 
 Set up a new Kuler instance with your API key:
 
@@ -41,7 +41,7 @@ Set up a new Kuler instance with your API key:
 
 For more, check out the rdoc.
 
-== REQUIREMENTS:
+== REQUIREMENTS
 
 For users:
  * nokogiri
@@ -52,11 +52,11 @@ For developers:
  * hoe-git
  * mocha
 
-== INSTALL:
+== INSTALL
 
 * gem install kuler
 
-== LICENSE:
+== LICENSE
 
 kuler is copyright (c) 2010 Ben Bleything, and distributed under the
 terms of the MIT license.  See the LICENSE file for details.

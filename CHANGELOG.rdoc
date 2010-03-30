@@ -1,6 +1,7 @@
-=== 0.1.0 / 2010-03-28
+= kuler Changelog
+
+=== 0.1.0 / 2010-03-29
 
 * 1 major enhancement
-
   * Birthday!
 
