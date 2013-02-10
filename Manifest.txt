@@ -6,6 +6,7 @@ Rakefile
 lib/kuler.rb
 lib/kuler/swatch.rb
 lib/kuler/theme.rb
+test/fixtures/mult_rating_results.xml
 test/fixtures/single_random_result.xml
 test/test_kuler.rb
 test/test_kuler_swatch.rb
