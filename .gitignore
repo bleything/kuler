@@ -5,3 +5,4 @@ pkg/
 
 .ruby-version
 .rbenv-gemsets
+*~
