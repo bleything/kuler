@@ -35,16 +35,23 @@ class TestKuler < Test::Unit::TestCase
   ### feed url generation
 
   def test_url_builder
-    expected = "https://kuler-api.adobe.com/rss/get.cfm?itemsPerPage=20&key=#{API_KEY}&listType=recent"
+    expected = "https://kuler-api.adobe.com/rss/get.cfm?itemsPerPage=20&key=#{API_KEY}&listType=recent&startIndex=0"
     actual = @kuler.build_url
 
     assert_equal expected, actual, "feed url incorrectly generated"
   end
 
   def test_url_builder_with_options
-    expected = "https://kuler-api.adobe.com/rss/get.cfm?itemsPerPage=100&key=#{API_KEY}&listType=random"
+    expected = "https://kuler-api.adobe.com/rss/get.cfm?itemsPerPage=100&key=#{API_KEY}&listType=random&startIndex=0"
 
     actual = @kuler.build_url(:type => :random, :limit => 100)
+    assert_equal expected, actual
+  end
+
+  def test_url_builder_with_offset
+    expected = "https://kuler-api.adobe.com/rss/get.cfm?itemsPerPage=20&key=#{API_KEY}&listType=recent&startIndex=3"
+
+    actual = @kuler.build_url(:offset => 3)
     assert_equal expected, actual
   end
 

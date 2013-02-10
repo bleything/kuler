@@ -30,21 +30,25 @@ class Kuler
   ###           Defaults to 20.
   def build_url(options = {})
     o = {
-      :type  => :recent,
-      :limit => 20
+      :type   => :recent,
+      :limit  => 20,
+      :offset => 0
     }.merge(options)
 
     unless [ :recent, :popular, :rating, :random ].include? o[:type]
       raise ArgumentError, "unknown feed type '#{o[:type]}'. Valid options are recent, popular, rating, or random"
     end
 
-    o[:limit] = [1,   (o[:limit] || 1).to_i  ].max
-    o[:limit] = [100, (o[:limit] || 100).to_i].min
+    o[:limit]   = [(o[:limit] || 1).to_i, 1].max
+    o[:limit]   = [100, (o[:limit] || 100).to_i].min
+    o[:offset]  = [(o[:offset] || 0).to_i, 0 ].max
 
+    # tranlate english keys to Adobe API keyword english
     options = {
       :key          => self.api_key,
       :itemsPerPage => o[:limit],
       :listType     => o[:type],
+      :startIndex   => o[:offset]
     }
 
     get_args = options.
