@@ -23,12 +23,11 @@ http://kuler.adobe.com/api
 
 Set up a new Kuler instance with your API key:
 
-    kuler = Kuler.new( 'your api key' )
+    kuler = Kuler.new('your api key')
 
-    # ... or ...
+... or set ENV['KULER_API_KEY'] and leave the parameter:
 
     kuler = Kuler.new
-    kuler.api_key = 'your api key'
 
 ... then, grab a random color theme:
 
@@ -37,7 +36,12 @@ Set up a new Kuler instance with your API key:
 ... and inspect the color theme:
 
     theme.hex_codes
-    => [ "#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff" ]
+    #=> [ "#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff" ]
+
+... or fetch a bunch of themes:
+
+    themes = kuler.fetch_themes(:type => :rating, :limit => 3)
+    #=> [ <#Kuler::Theme ...>, <#Kuler::Theme ...>, <#Kuler::Theme ...> ]
 
 For more, check out the rdoc.
 
