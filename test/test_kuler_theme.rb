@@ -42,5 +42,10 @@ class TestKulerTheme < Test::Unit::TestCase
     assert_equal expected, @theme.hex_codes
   end
 
+  def test_tags
+    expected = %w[ beach diver ocean sandy stone ]
+    assert_equal expected, @theme.tags
+  end
+
 
 end

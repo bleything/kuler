@@ -6,10 +6,10 @@ require "kuler"
 
 class TestKuler < Test::Unit::TestCase
   API_KEY  = "test_api_key"
-  FIXTURES = Pathname.new( File.dirname(__FILE__) ).expand_path + "fixtures"
+  FIXTURES = Pathname.new(File.dirname(__FILE__)).expand_path.join("fixtures")
 
   def setup
-    @kuler = Kuler.new( API_KEY )
+    @kuler = Kuler.new(API_KEY)
   end
 
   ########################################################################
@@ -18,8 +18,17 @@ class TestKuler < Test::Unit::TestCase
   def test_creation
     sample_key = '123456'
 
-    kuler = Kuler.new( sample_key )
+    kuler = Kuler.new(sample_key)
     assert_equal sample_key, kuler.api_key, "api key does not match"
+  end
+
+  def test_creation_through_env
+    ENV['KULER_API_KEY'], oldkey = '123456', ENV['KULER_API_KEY']
+
+    kuler = Kuler.new
+    assert_equal ENV['KULER_API_KEY'], kuler.api_key, "api key does not match"
+  ensure
+    ENV['KULER_API_KEY'] = oldkey
   end
 
   ########################################################################
@@ -35,7 +44,7 @@ class TestKuler < Test::Unit::TestCase
   def test_url_builder_with_options
     expected = "https://kuler-api.adobe.com/rss/get.cfm?itemsPerPage=100&key=#{API_KEY}&listType=random"
 
-    actual = @kuler.build_url( :type => :random, :limit => 100 )
+    actual = @kuler.build_url(:type => :random, :limit => 100)
     assert_equal expected, actual
   end
 
@@ -56,20 +65,34 @@ class TestKuler < Test::Unit::TestCase
       @kuler.build_url :limit => 100
       @kuler.build_url :limit => 101
     end
-
   end
 
   ########################################################################
   ### feed url generation
 
   def test_fetch_random_theme
-    url = @kuler.build_url( :type => :random, :limit => 1 )
-    xml = FIXTURES + "single_random_result.xml"
-    @kuler.expects( :open ).with( url ).returns( xml.read )
+    url = @kuler.build_url :type => :random, :limit => 1
+    xml = FIXTURES.join 'single_random_result.xml'
+    @kuler.expects(:open).with(url).returns(xml.read)
 
     theme = @kuler.fetch_random_theme
     assert_kind_of Kuler::Theme, theme
   end
 
+  def test_fetch_theme
+    options = { :type => :rating, :limit => 5 }
 
+    url = @kuler.build_url(options)
+    xml = FIXTURES.join 'mult_rating_results.xml'
+    @kuler.expects(:open).with(url).returns(xml.read)
+
+    themes = @kuler.fetch_themes(options)
+    assert_kind_of Array, themes
+
+    themes.each do |theme|
+      assert_kind_of Kuler::Theme, theme
+    end
+
+    assert_equal options[:limit], themes.size, 'incorrect number of themes'
+  end
 end
