@@ -11,39 +11,41 @@ share color themes. This is a Ruby library to access the Kuler service.
 To use Kuler, you'll need an API key, which you can obtain from Adobe at
 http://kuler.adobe.com/api
 
-== FEATURES/PROBLEMS
-
-* retrieve color themes from Kuler:
-  * most recent themes
-  * most popular
-  * highest rated
-  * random
-
 == SYNOPSIS
 
-Set up a new Kuler instance with your API key:
+*First*, set up a new Kuler instance with your API key. Either provide it directly
+as paramater:
 
     kuler = Kuler.new('your api key')
 
-... or set ENV['KULER_API_KEY'] and leave the parameter:
+or set <code>ENV['KULER_API_KEY']</code> and leave the parameter:
 
     kuler = Kuler.new
 
-... then, grab a random color theme:
+To *interact* with the Kuler API, you can fetch a random color theme and inspect
+it like so:
 
     theme = kuler.fetch_random_theme
-
-... and inspect the color theme:
-
     theme.hex_codes
     #=> [ "#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff" ]
 
-... or fetch a bunch of themes:
+To *refine* the search, use the Kuler#fetch_themes method:
 
     themes = kuler.fetch_themes(:type => :rating, :limit => 3)
-    #=> [ <#Kuler::Theme ...>, <#Kuler::Theme ...>, <#Kuler::Theme ...> ]
+    #=> [ #<Kuler::Theme ...>, #<Kuler::Theme ...>, #<Kuler::Theme ...> ]
 
-For more, check out the rdoc.
+== FEATURES/PROBLEMS
+
+Retrieve color themes from Kuler:
+
+most recent themes::  <code>kuler.fetch_themes(:type => :recent)</code>
+most popular::        <code>kuler.fetch_themes(:type => :popular)</code>
+highest rated::       <code>kuler.fetch_themes(:type => :rated)</code>
+random::              <code>kuler.fetch_themes(:type => :random)</code>
+limit the results::   <code>kuler.fetch_themes(:limit => 25)</code>
+offset the results::  <code>kuler.fetch_themes(:offset => 3)</code>
+
+More details on limitations, return values etc. are available in the RDoc.
 
 == REQUIREMENTS
 
