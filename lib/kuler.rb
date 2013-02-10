@@ -71,10 +71,9 @@ class Kuler
   ### Kuler.build_url. Return an array of Kuler::Theme items.
   def fetch_themes(options={})
     url = build_url options
-    themes = Nokogiri::XML(open(url)).xpath('//item').map do |item|
-      Kuler::Theme.new item.at('//kuler:themeItem')
+    themes = Nokogiri::XML(open(url)).search('//item').map do |item|
+      Kuler::Theme.new item.at('./kuler:themeItem')
     end
-
     themes
   end
 end

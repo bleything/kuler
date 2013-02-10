@@ -101,5 +101,8 @@ class TestKuler < Test::Unit::TestCase
     end
 
     assert_equal options[:limit], themes.size, 'incorrect number of themes'
+
+    expected_theme_ids = [2216979, 1974489, 1994456, 2247332, 1637621]
+    assert_equal expected_theme_ids, themes.map{|t| t.theme_id }
   end
 end
