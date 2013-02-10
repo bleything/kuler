@@ -1,5 +1,10 @@
 = kuler Changelog
 
+=== 0.2.0.pre / 2013-02-10
+
+* 1 major enhancement
+  * kuler now provides an interface to actually fetch multiple themes.
+
 === 0.1.0 / 2010-03-29
 
 * 1 major enhancement

@@ -5,60 +5,75 @@ require 'kuler/swatch'
 require 'kuler/theme'
 
 class Kuler
-  VERSION = '0.1.0' # :nodoc:
-  BASE_URL = "http://kuler-api.adobe.com" # :nodoc:
+  # Kuler Version (SemVer)
+  VERSION = '0.2.0.pre'
+
+  # API URL template
+  API_URL = "https://kuler-api.adobe.com/rss/get.cfm?%s"
 
   ### the key required to access the kuler API
   attr_reader :api_key
 
-  ### Create a new Kuler object. Accepts a single argument, the
-  ### +api_key+.
-  def initialize( api_key )
-    @api_key = api_key
+  ### Create a new Kuler object. Accepts a single argument, the +api_key+.
+  ### If none provided, the KULER_API_KEY environment variable is used.
+  def initialize(api_key=nil)
+    @api_key = api_key || ENV['KULER_API_KEY'] || raise(ArgumentError, 'no API key found')
   end
 
   ### Build the appropriate URL for a request to the Kuler API.
   ###
-  ### Parameters:
-  ### +type+::  the type of API call to make. Options are +recent+,
-  ###           +popular+, +rating+, or +random+.
-  ### +limit+:: the number of themes to return. Valid range is
-  ###           1 to 100.
-  def build_url( args = {} )
-    # default options
-    opts = {
-      :type  => :recent,
-      :limit => 20
-    }.merge( args )
+  ### Options:
+  ### +type+::  the type of API call to make. Options are +recent+ (default
+  ###           if not given), +popular+, +rating+, or +random+.
+  ### +limit+:: the number of themes to return. Valid range is 1 to 100.
+  ###           Numbers outside this range will be capped to those limits.
+  ###           Defaults to 20.
+  def build_url(options = {})
+    o = {
+      :type   => :recent,
+      :limit  => 20,
+      :offset => 0
+    }.merge(options)
 
-    unless [ :recent, :popular, :rating, :random ].include? opts[:type]
-      raise ArgumentError, "unknown feed type '#{opts[:type]}'. Valid options are recent, popular, rating, or random"
+    unless [ :recent, :popular, :rating, :random ].include? o[:type]
+      raise ArgumentError, "unknown feed type '#{o[:type]}'. Valid options are recent, popular, rating, or random"
     end
 
-    unless (1..100).include? opts[:limit]
-      raise ArgumentError, "invalid limit: #{opts[:limit]}. Valid options are 1-100"
-    end
+    o[:limit]   = [(o[:limit] || 1).to_i, 1].max
+    o[:limit]   = [100, (o[:limit] || 100).to_i].min
+    o[:offset]  = [(o[:offset] || 0).to_i, 0 ].max
 
+    # tranlate english keys to Adobe API keyword english
     options = {
       :key          => self.api_key,
-
-      :itemsPerPage => opts[:limit],
-      :listType     => opts[:type],
+      :itemsPerPage => o[:limit],
+      :listType     => o[:type],
+      :startIndex   => o[:offset]
     }
 
     get_args = options.
-      sort_by {|k,v| k.to_s }.
-      map     {|k,v| "#{k}=#{v}" }.
-      join( "&" )
+      delete_if {|_,v| v.nil? }.
+      sort_by   {|k,_| k.to_s }.
+      map       {|k,v| "#{k}=#{v}" }.
+      join("&")
 
-    return "#{BASE_URL}/rss/get.cfm?#{get_args}"
+    return API_URL % get_args
   end
 
-  ### fetch a single random color theme
+  ### Fetch a single random color theme. Returns a single Kuler::Theme
   def fetch_random_theme
-    url = build_url( :type => :random, :limit => 1 )
-    xml = Nokogiri::XML( open(url) ).at( "//kuler:themeItem" )
-    return Kuler::Theme.new( xml )
+    fetch_themes(:type => :random, :limit => 1).first
   end
 
+  ### Searches and fetches a set of themes filtered by the given arguments.
+  ###
+  ### Valid +options+ and their default values are defined through
+  ### Kuler.build_url. Return an array of Kuler::Theme items.
+  def fetch_themes(options={})
+    url = build_url options
+    themes = Nokogiri::XML(open(url)).search('//item').map do |item|
+      Kuler::Theme.new item.at('./kuler:themeItem')
+    end
+    themes
+  end
 end

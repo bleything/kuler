@@ -2,3 +2,7 @@ coverage.info
 coverage/
 doc/
 pkg/
+
+.ruby-version
+.rbenv-gemsets
+*~
