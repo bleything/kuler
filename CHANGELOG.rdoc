@@ -1,6 +1,6 @@
 = kuler Changelog
 
-=== 0.2.0 / 2013-02-10
+=== 0.2.0-pre / 2013-02-10
 
 * 1 major enhancement
   * kuler now provides an interface to actually fetch multiple themes.

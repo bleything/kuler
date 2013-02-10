@@ -6,7 +6,7 @@ require 'kuler/theme'
 
 class Kuler
   # Kuler Version (SemVer)
-  VERSION = '0.2.0'
+  VERSION = '0.2.0-pre'
 
   # API URL template
   API_URL = "https://kuler-api.adobe.com/rss/get.cfm?%s"
