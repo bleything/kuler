@@ -26,14 +26,14 @@ class TestKuler < Test::Unit::TestCase
   ### feed url generation
 
   def test_url_builder
-    expected = "http://kuler-api.adobe.com/rss/get.cfm?itemsPerPage=20&key=#{API_KEY}&listType=recent"
+    expected = "https://kuler-api.adobe.com/rss/get.cfm?itemsPerPage=20&key=#{API_KEY}&listType=recent"
     actual = @kuler.build_url
 
     assert_equal expected, actual, "feed url incorrectly generated"
   end
 
   def test_url_builder_with_options
-    expected = "http://kuler-api.adobe.com/rss/get.cfm?itemsPerPage=100&key=#{API_KEY}&listType=random"
+    expected = "https://kuler-api.adobe.com/rss/get.cfm?itemsPerPage=100&key=#{API_KEY}&listType=random"
 
     actual = @kuler.build_url( :type => :random, :limit => 100 )
     assert_equal expected, actual
@@ -49,19 +49,12 @@ class TestKuler < Test::Unit::TestCase
       @kuler.build_url :type => :recent
     end
 
-    # invalid counts
-    assert_raise ArgumentError do
-      @kuler.build_url :limit => 0
-    end
-
-    assert_raise ArgumentError do
-      @kuler.build_url :limit => 101
-    end
-
     assert_nothing_raised do
+      @kuler.build_url :limit => 0
       @kuler.build_url :limit => 1
       @kuler.build_url :limit => 50
       @kuler.build_url :limit => 100
+      @kuler.build_url :limit => 101
     end
 
   end
